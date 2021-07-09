@@ -5,9 +5,10 @@ function box(cor, x, y, largura, altura) {
 
 function desenhar() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < list.length; i++) {
-    box(list[i].cor, list[i].x, list[i].y, list[i].largura, list[i].altura);
-  }
+  box(box1.cor, box1.x, box1.y, box1.largura, box1.altura);
+  box(box2.cor, box2.x, box2.y, box2.largura, box2.altura);
+  box(box3.cor, box3.x, box3.y, box3.largura, box3.altura);
+  box(box4.cor, box4.x, box4.y, box4.largura, box4.altura);
 }
 
 function verificarSentido(box) {
@@ -32,11 +33,18 @@ function printPosicao() {
 }
 
 function loop() {
-  for (let i = 0; i < list.length; i++) {
-    moverObjetos(list[i]);
-    verificarSentido(list[i]);
-  }
-  //printPosicao();
+  moverObjetos(box1);
+  verificarSentido(box1);
+
+  moverObjetos(box2);
+  verificarSentido(box2);
+
+  moverObjetos(box3);
+  verificarSentido(box3);
+
+  moverObjetos(box4);
+  verificarSentido(box4);
+
   desenhar();
   requestAnimationFrame(loop);
   //setTimeout(loop, 1000 / 60);
@@ -49,7 +57,7 @@ function init() {
 }
 
 const box1 = {
-  x: 0,
+  x: 30,
   y: 0,
   largura: 100,
   altura: 100,
@@ -57,9 +65,9 @@ const box1 = {
   sentido: "descer",
   step: 1,
 };
-console.log(box1);
+
 const box2 = {
-  x: 100,
+  x: 180,
   y: 10,
   largura: 50,
   altura: 50,
@@ -67,7 +75,7 @@ const box2 = {
   sentido: "subir",
   step: 4,
 };
-console.log(box2);
+
 const box3 = {
   x: 300,
   y: 50,
@@ -77,7 +85,6 @@ const box3 = {
   sentido: "descer",
   step: 2,
 };
-console.log(box3);
 
 const box4 = {
   x: 500,
@@ -89,10 +96,6 @@ const box4 = {
   step: 3,
 };
 
-const list = [box1, box2, box3, box4];
-console.log(list[3]);
-
 let canvas, ctx;
-let posY = 0;
-let sentido = "descer";
+
 document.body.onload = init;

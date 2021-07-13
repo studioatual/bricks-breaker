@@ -61,7 +61,7 @@ const cores = [
 
 const list = [];
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 10; i++) {
   const index = Math.round(Math.random() * cores.length);
   list.push({
     x: Math.round(Math.random() * 800),
